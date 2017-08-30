@@ -3,109 +3,102 @@ package test;
 import java.util.Scanner;
 
 /**
+ * Created by Alexsandr on 28.08.2017.
+ * Технічне завдання: напишіть програму “Першокурсники”:
  * В програмі мають бути створені класи: студенти, професор, група (за бажанням класи можна додавати);
- Дизайн класів (їх поля, взаємозв’язки) - також Ваша задача;
- 1 Студенти повинні вміти обрати Старосту за особистими якостями одногрупників (правила відбору визначаєте Ви).
-    Програма повинна виводити Старосту групи в консоль;
- 2 Професор має вміти провести перекличку та визначити, чи всі студенти присутні (результат виводиться в консоль);
- 3 Набір студентів, груп та професорів може бути заданий за замовчуванням (можна захардкодити);
- Приділіть увагу правилам ООП;
- Не забудьте прикласти інструкцію користувача до виконаного завдання.
- * Created by Alexsandr on 21.04.2017.
+ * Дизайн класів (їх поля, взаємозв’язки) - також Ваша задача;
+ * Студенти повинні вміти обрати Старосту за особистими якостями одногрупників (правила відбору визначаєте Ви). Програма повинна виводити Старосту групи в консоль;
+ * Професор має вміти провести перекличку та визначити, чи всі студенти присутні (результат виводиться в консоль);
+ * Набір студентів, груп та професорів може бути заданий за замовчуванням (можна захардкодити);
+ * Приділіть увагу правилам ООП;
+ * Не забудьте прикласти інструкцію користувача до виконаного завдання.
  */
 public class Main {
-    private static Professor pr = new Professor();
-    private static int k = 0;
-    private static   boolean run = true;
-    private static   boolean run_2 = true;
+    private static int number = 0;
+    private static University university = new University();
 
-    public static void print(){
-        System.out.println("Выбирите какой пункт вы хотите и введите в консоль и нажмите 'Enter' ");
-        System.out.println();
-        System.out.println("1 Провести перекличку ");
-        System.out.println("2 Выбрать Старосту ");
-        System.out.println("3 Вывести старасту на консоль ");
+    public static void main(String[] args) {
+        starting();
     }
-    public static String Scan(){
+
+    public static void print() {
+        System.out.println("Select the item number and enter into the console and press 'Enter' ");
+        System.out.println();
+        System.out.println("0 Exit from the program");
+        System.out.println("1 Take roll call");
+        System.out.println("2 Choose Captain ");
+        System.out.println("3 Show captain's name on the console ");
+        System.out.println();
+    }
+
+    public static String readConsole() {
         Scanner scanner = new Scanner(System.in);
         String s = scanner.nextLine();
         return s;
     }
 
-    public static int check() {// создаем метод проверки чтоб водили только
-                                 // цыфры буквы ни ни!
-
+    public static int check() {
         do {
             Scanner scan = new Scanner(System.in);
             if (scan.hasNextInt()) {
-                k = scan.nextInt();
+                number = scan.nextInt();
                 break;
             } else {
-                System.out.println(" Будте внимательней!!!");
-                System.out.println(" В ведите номер пункта который вас интересует ");
+                System.out.println(" Be attentive!!!");
+                System.out.println(" Enter the number of the item you are interested in. ");
             }
         } while (true);
-        return k;
+        return number;
     }
-    public static   void rollcall() {
-        System.out.println("Професор  "+pr.getProfesor()+" проводит перекличку  Выбирите какой пункт вы хотите и введите в консоль и нажмите 'Enter' ");
-        System.out.println("1 вывести на консоль список студентов ");
-        System.out.println("2 ввести Фамилию студента и узнать если он на месте ");
 
-        while (run_2) {
-            check();
-            switch (k) {
-                case 1:
-                    pr.group();
-                    run = true;
-                    starting(run);
-                    run_2 =false;
-                    break;
-                case 2:
-                    pr.compare(Scan());
-                    run = true;
-                    starting(run);
-                    run_2 =false;
-                    break;
-            }
+    public static void rollcall() {
+
+        boolean run2 = true;
+        System.out.println("Select the item number and enter into the console and press 'Enter'  \n");
+        System.out.println("1 List of all students from all groups  as well as professors assigned to each group on the console ");
+        System.out.println("2 Enter the surname of the student and find out if he is in place ");
+        System.out.println("3 Enter the group name to see the students\n ");
+
+
+        check();
+        switch (number) {
+            case 1:
+                university.allStudentsGroupProfessorPrint();
+                break;
+            case 2:
+                System.out.println("Enter the surname");
+                university.checkPresenceOfStudent(readConsole());
+                break;
+            case 3:
+                System.out.println("Enter the group name");
+                university.showGroup(readConsole());
+                break;
         }
-    }
-
-    public static void main(String[] args) {
-        starting(run);
 
     }
-    public static void  starting(Boolean run){
+
+    public static void starting() {
+        boolean run = true;
         System.out.println();
-        while (run){
+        while (run) {
             print();
             check();
-            switch (k){
+            switch (number) {
+                case 0:
+                    System.exit(0);
                 case 1:
                     rollcall();
-                    run = false;
-                    k = 0;
-
                     break;
 
                 case 2:
-                    choose();
-                    pr.starosta(Scan());
+                    university.qualityLIst();
+                    university.chooseCaptain(readConsole());
                     break;
-
 
                 case 3:
-                    System.out.println( " Староста "+ pr.group.getStarosta());
+                    System.out.println(" Captain " + university.showCaptain() + "\n");
                     break;
-
-
             }
-
         }
     }
-
-    private static void choose() {
-        pr.choice();
-    }
-
 }

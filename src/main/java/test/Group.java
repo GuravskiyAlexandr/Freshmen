@@ -1,5 +1,6 @@
 package test;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,38 +8,41 @@ import java.util.List;
  * Created by Alexsandr on 21.04.2017.
  */
 public class Group {
-    private String starosta = "нет";
-    private Students students = new Students() ;
-    private String name_Grup;
-    private List<Students> students_Lict = new ArrayList<>();
+    private Student students = new Student();
+    private String nameGrup;
+    private List<Student> studentsLict = new ArrayList<>();
 
     public Group() {
 
     }
 
-    public void setStarosta(String starosta) {
-        this.starosta = starosta;
-    }
-
-    public String getStarosta() {
-        return starosta;
-    }
-
-
-    Group(String name_Grup){
-        this.name_Grup = name_Grup;
-        this.starosta = starosta;
+    public Group(String name_Grup) {
+        this.nameGrup = name_Grup;
 
     }
 
-    public String getName_Grup() {
-        return name_Grup;
+    public String getNameGrup() {
+        return nameGrup;
     }
 
-    public void addStudentGroup(Students student) {
-        students_Lict.add(student);
+    public void addStudent(Student student) {
+        studentsLict.add(student);
     }
-    public List<Students> getStud(){
-        return students_Lict;
+
+    public List<Student> getStudentsLict() {
+        return studentsLict;
+    }
+
+    public List<Student> studentList() {
+        return studentsLict;
+    }
+
+    @Override
+    public String toString() {
+        return "Group{" +
+                ", students=" + students +
+                ", nameGrup='" + nameGrup + '\'' +
+                ", studentsLict=" + studentsLict +
+                '}';
     }
 }
