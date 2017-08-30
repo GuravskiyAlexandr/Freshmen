@@ -14,7 +14,7 @@ import java.util.Scanner;
  * Не забудьте прикласти інструкцію користувача до виконаного завдання.
  */
 public class Main {
-    private static int number = 0;
+    private static int number;
     private static University university = new University();
 
     public static void main(String[] args) {
@@ -33,8 +33,8 @@ public class Main {
 
     public static String readConsole() {
         Scanner scanner = new Scanner(System.in);
-        String s = scanner.nextLine();
-        return s;
+        String text = scanner.nextLine();
+        return text;
     }
 
     public static int check() {
@@ -52,18 +52,15 @@ public class Main {
     }
 
     public static void rollcall() {
-
-        boolean run2 = true;
         System.out.println("Select the item number and enter into the console and press 'Enter'  \n");
         System.out.println("1 List of all students from all groups  as well as professors assigned to each group on the console ");
         System.out.println("2 Enter the surname of the student and find out if he is in place ");
         System.out.println("3 Enter the group name to see the students\n ");
 
-
         check();
         switch (number) {
             case 1:
-                university.allStudentsGroupProfessorPrint();
+                university.allStudentsGroupsProfessorsPrint();
                 break;
             case 2:
                 System.out.println("Enter the surname");
@@ -78,9 +75,8 @@ public class Main {
     }
 
     public static void starting() {
-        boolean run = true;
         System.out.println();
-        while (run) {
+        while (true) {
             print();
             check();
             switch (number) {
@@ -89,12 +85,10 @@ public class Main {
                 case 1:
                     rollcall();
                     break;
-
                 case 2:
                     university.qualityLIst();
                     university.chooseCaptain(readConsole());
                     break;
-
                 case 3:
                     System.out.println(" Captain " + university.showCaptain() + "\n");
                     break;

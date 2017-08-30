@@ -52,7 +52,7 @@ public class Professor {
         return "Professor{" +
                 "surname=' " + surname + '\'' +
                 ", name=' " + name + '\'' +
-                ", group= " + group.getNameGrup() +
+                ", group= " + group.getNameGroup() +
                 '}';
     }
 }

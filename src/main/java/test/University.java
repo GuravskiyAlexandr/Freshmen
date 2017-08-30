@@ -7,37 +7,35 @@ import java.util.List;
  * Created by Alexsandr on 28.08.2017.
  */
 public class University {
-    private List<Group> groupList = new ArrayList<>();
+    private List<Group> groupsList = new ArrayList<>();
     private List<Professor> professorsList = new ArrayList<>();
 
     public University() {
 
-
         String group1 = "Computer techologies";
         String group2 = "engineering";
 
-        groupList.add(new Group(group1));
-        groupList.add(new Group(group2));
+        groupsList.add(new Group(group1));
+        groupsList.add(new Group(group2));
 
-        Group group = groupList.get(0);
+        Group group = groupsList.get(0);
         Student student = new Student("John", "Smit", "Cool", false);
         group.addStudent(student);
 
-        group = groupList.get(0);
+        group = groupsList.get(0);
         student = new Student("Tramp", "Alexsndr", "Greedy", false);
         group.addStudent(student);
 
-        group = groupList.get(1);
+        group = groupsList.get(1);
         student = new Student("Cucerman", "Kris", "Cunning", false);
         group.addStudent(student);
 
-        group = groupList.get(1);
+        group = groupsList.get(1);
         student = new Student("Barek", "Abama", "Reveler", false);
         group.addStudent(student);
 
-
-        Professor professor = new Professor("Mendeleev", "Dmitry", groupList.get(0));
-        Professor professor1 = new Professor("Mendeleev", "Dmitry", groupList.get(1));
+        Professor professor = new Professor("Mendeleev", "Dmitry", groupsList.get(0));
+        Professor professor1 = new Professor("Зубов", "Андрей", groupsList.get(1));
         professorsList.add(professor);
         professorsList.add(professor1);
 
@@ -45,20 +43,20 @@ public class University {
 
     public void qualityLIst() {
         System.out.println("With what personal quality should be the captain ");
-        for (int i = 0; i < groupList.size(); i++) {
-            List<Student> st = groupList.get(i).studentList();
+        for (int i = 0; i < groupsList.size(); i++) {
+            List<Student> st = groupsList.get(i).getStudentsLict();
             for (int f = 0; f < st.size(); f++) {
-                System.out.println(groupList.get(i).studentList().get(f).getQuality().toString());
+                System.out.println(groupsList.get(i).getStudentsLict().get(f).getQuality().toString());
             }
         }
         System.out.println();
         System.out.println(" Select it from the list and enter it into the console and it will be assigned");
     }
 
-    public void allStudentsGroupProfessorPrint() {
+    public void allStudentsGroupsProfessorsPrint() {
         for (Professor pp : professorsList) {
             System.out.println("Professor " + pp.getFullname());
-            System.out.println("Group " + pp.getGroup().getNameGrup());
+            System.out.println("Group " + pp.getGroup().getNameGroup());
             for (Student ss : pp.getGroup().getStudentsLict()) {
                 System.out.println("Student " + ss.getFullName());
             }
@@ -68,10 +66,10 @@ public class University {
 
     public void checkPresenceOfStudent(String lastName) {
         boolean presence = true;
-        for (int i = 0; i < groupList.size(); i++) {
-            List<Student> st = groupList.get(i).studentList();
+        for (int i = 0; i < groupsList.size(); i++) {
+            List<Student> st = groupsList.get(i).getStudentsLict();
             for (int j = 0; j < st.size(); j++) {
-                if (lastName.equalsIgnoreCase(groupList.get(i).studentList().get(j).getSurname())) {
+                if (lastName.equalsIgnoreCase(groupsList.get(i).getStudentsLict().get(j).getSurname())) {
                     System.out.println(" There is such a student " + lastName + "\n");
                     presence = false;
                 }
@@ -84,14 +82,14 @@ public class University {
 
     public void chooseCaptain(String quality) {
         boolean search = true;
-        for (int i = 0; i < groupList.size(); i++) {
-            List<Student> st = groupList.get(i).studentList();
+        for (int i = 0; i < groupsList.size(); i++) {
+            List<Student> st = groupsList.get(i).getStudentsLict();
             for (int j = 0; j < st.size(); j++) {
-                if (quality.equalsIgnoreCase(groupList.get(i).studentList().get(j).getQuality().toString())) {
-                    System.out.println(" Captain  " + groupList.get(i).studentList().get(j).getFullName());
-                    quality = groupList.get(i).studentList().get(j).getFullName() + "  quality " + quality;
+                if (quality.equalsIgnoreCase(groupsList.get(i).getStudentsLict().get(j).getQuality().toString())) {
+                    System.out.println(" Captain  " + groupsList.get(i).getStudentsLict().get(j).getFullName());
+                    quality = groupsList.get(i).getStudentsLict().get(j).getFullName() + "  quality " + quality;
                     //group.setCaptain(quality);
-                    groupList.get(i).studentList().get(j).setCaptain(true);
+                    groupsList.get(i).getStudentsLict().get(j).setCaptain(true);
                     search = false;
                     System.out.println();
                 }
@@ -105,10 +103,10 @@ public class University {
 
     public void showGroup(String nameGroup) {
         boolean such = true;
-        for (int i = 0; i < groupList.size(); i++) {
-            if (nameGroup.equalsIgnoreCase(groupList.get(i).getNameGrup())) {
+        for (int i = 0; i < groupsList.size(); i++) {
+            if (nameGroup.equalsIgnoreCase(groupsList.get(i).getNameGroup())) {
                 System.out.println("Group  " + nameGroup);
-                List<Student> st = groupList.get(i).studentList();
+                List<Student> st = groupsList.get(i).getStudentsLict();
                 for (int j = 0; j < st.size(); j++) {
                     System.out.println("Student  " + st.get(j).getFullName());
                     such = false;
@@ -122,11 +120,11 @@ public class University {
     }
 
     public String showCaptain() {
-        for (int i = 0; i < groupList.size(); i++) {
-            List<Student> st = groupList.get(i).studentList();
+        for (int i = 0; i < groupsList.size(); i++) {
+            List<Student> st = groupsList.get(i).getStudentsLict();
             for (int j = 0; j < st.size(); j++) {
-                if (groupList.get(i).studentList().get(j).getCaptain()) {
-                    return groupList.get(i).studentList().get(j).getFullName();
+                if (groupsList.get(i).getStudentsLict().get(j).getCaptain()) {
+                    return groupsList.get(i).getStudentsLict().get(j).getFullName();
                 }
             }
         }

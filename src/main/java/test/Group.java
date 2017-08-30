@@ -8,7 +8,6 @@ import java.util.List;
  * Created by Alexsandr on 21.04.2017.
  */
 public class Group {
-    private Student students = new Student();
     private String nameGrup;
     private List<Student> studentsLict = new ArrayList<>();
 
@@ -16,12 +15,12 @@ public class Group {
 
     }
 
-    public Group(String name_Grup) {
-        this.nameGrup = name_Grup;
+    public Group(String nameGroup) {
+        this.nameGrup = nameGroup;
 
     }
 
-    public String getNameGrup() {
+    public String getNameGroup() {
         return nameGrup;
     }
 
@@ -33,14 +32,9 @@ public class Group {
         return studentsLict;
     }
 
-    public List<Student> studentList() {
-        return studentsLict;
-    }
-
     @Override
     public String toString() {
         return "Group{" +
-                ", students=" + students +
                 ", nameGrup='" + nameGrup + '\'' +
                 ", studentsLict=" + studentsLict +
                 '}';
