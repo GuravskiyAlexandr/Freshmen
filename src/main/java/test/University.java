@@ -96,7 +96,6 @@ public class University {
         if (search) {
             System.out.println(" There is no such quality = '" + quality + "\n");
         }
-        search = true;
     }
 
     public void showGroup(String nameGroup) {
