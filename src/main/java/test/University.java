@@ -3,9 +3,7 @@ package test;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Alexsandr on 28.08.2017.
- */
+
 public class University {
     private List<Group> groupsList = new ArrayList<>();
     private List<Professor> professorsList = new ArrayList<>();

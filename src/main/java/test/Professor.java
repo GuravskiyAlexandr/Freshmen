@@ -1,9 +1,7 @@
 package test;
 
 
-/**
- * Created by Alexsandr on 28.08.2017.
- */
+
 public class Professor {
     private String surname;
     private String name;

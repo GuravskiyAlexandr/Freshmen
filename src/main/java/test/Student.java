@@ -1,8 +1,6 @@
 package test;
 
-/**
- * Created by Alexsandr on 21.04.2017.
- */
+
 public class Student {
     private String surname;
     private String name;
