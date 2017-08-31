@@ -90,7 +90,7 @@ public class Main {
                     university.chooseCaptain(readConsole());
                     break;
                 case 3:
-                    System.out.println(" Captain" + university.showCaptain() + "\n");
+                    System.out.println(" Captain " + university.showCaptain() + "\n");
                     break;
             }
         }
