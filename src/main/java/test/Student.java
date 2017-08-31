@@ -17,7 +17,7 @@ public class Student {
         this.name = name;
         this.quality = quality;
         this.captain = captain;
-        fullName = "Surname " + surname + " Name " + name;
+        fullName = " Surname " + surname + " Name " + name;
     }
 
     public Boolean getCaptain() {

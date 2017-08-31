@@ -48,7 +48,7 @@ public class Professor {
     @Override
     public String toString() {
         return "Professor{" +
-                "surname=' " + surname + '\'' +
+                " surname= " + surname + '\'' +
                 ", name=' " + name + '\'' +
                 ", group= " + group.getNameGroup() +
                 '}';
