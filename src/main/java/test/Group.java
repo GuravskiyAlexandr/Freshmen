@@ -4,9 +4,7 @@ package test;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Alexsandr on 21.04.2017.
- */
+
 public class Group {
     private String nameGrup;
     private List<Student> studentsLict = new ArrayList<>();
